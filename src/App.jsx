@@ -29,7 +29,7 @@ function App() {
           ))}
         </div>
         <div className="flex items-center">
-          <div className="flex-1">
+          <div className="flex-1 animate-slideInFromLeft">
             <div className="w-1/2">
               <h1 className="font-bold text-2xl">Against Evolving Threats</h1>
               <p className="my-5">
@@ -45,18 +45,59 @@ function App() {
               </button>
             </div>
           </div>
-          <div className="flex-1 relative">
-            <img
-              src={asset}
-              alt="asset"
-              className="rounded-full w-1/2 bg-background/50 p-6"
-            />
-            <Navigator
-              title={"Safe Guard"}
-              color={"#000000"}
-              top={-150}
-              left={-150}
-            />
+          <div className="flex-1 relative animate-slideInFromRight">
+            <div>
+              <img
+                src={asset}
+                alt="asset"
+                className="rounded-full w-1/2 bg-background/50 p-6"
+              />
+              <Navigator
+                title={"SMB Guard"}
+                color={"#000000"}
+                top={-150}
+                left={-170}
+                duration="4s"
+              />
+              <Navigator
+                title={"Turkey Security Solution"}
+                color={"#FF5733"}
+                top={0}
+                left={-270}
+                duration="12s"
+              />
+              <Navigator
+                title={"Managed Security Solution"}
+                color={"#000000"}
+                top={150}
+                left={-200}
+                duration="6s"
+              />
+              <Navigator
+                title={"Enterprise Security"}
+                color={"#FF5733"}
+                top={-150}
+                right={100}
+                duration="8s"
+                reverse
+              />
+              <Navigator
+                title={"Managed Cloud Security"}
+                color={"#000000"}
+                top={0}
+                left={220}
+                duration="6s"
+                reverse
+              />
+              <Navigator
+                title={"Bug Bounty Program"}
+                color={"#FF5733"}
+                top={180}
+                right={120}
+                duration="14s"
+                reverse
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -86,11 +127,22 @@ const Navigator = ({
   bottom = 0,
   left = 0,
   right = 0,
+  reverse = false,
+  duration = "3s",
 }) => {
   return (
     <div
-      className="absolute flex items-center"
-      style={{ color: color, top, left, bottom, right }}
+      className={`absolute flex ${
+        reverse && "flex-row-reverse"
+      } items-center animate-fadeInOut`}
+      style={{
+        color: color,
+        top,
+        left,
+        bottom,
+        right,
+        animation: `fadeInOut ${duration} ease-in-out infinite`,
+      }}
     >
       <div
         className="flex items-center gap-2 p-2 rounded-md"
@@ -103,7 +155,7 @@ const Navigator = ({
         <p>{title}</p>
       </div>
       <hr className="border-2 border-black w-20" />
-      <ImRadioUnchecked className="bg-white/90 rounded-full p-2 text-4xl" />
+      <ImRadioUnchecked className="bg-white/70 rounded-full p-2 text-4xl" />
     </div>
   );
 };
